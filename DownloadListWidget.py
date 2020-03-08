@@ -18,6 +18,7 @@ class DownloadListWidget(QWidget):
 
         # set up download table
         self.downloadTable = QTableWidget(0, 3, self)
+        self.downloadTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.downloadTableHeaderView = QHeaderView(Qt.Horizontal, self.downloadTable)
         self.downloadTable.setHorizontalHeader(self.downloadTableHeaderView)
         self.downloadTableHeaderView.setSectionResizeMode(QHeaderView.Stretch)
@@ -29,6 +30,8 @@ class DownloadListWidget(QWidget):
         downloadWidget = DownloadWidget(filename, url, progress, self)
         index = self.downloadTable.rowCount()
         self.downloadTable.insertRow(index)
-        self.downloadTable.setItem(index, 0, QTableWidgetItem(filename))
+        fileInfo = QFileInfo(filename)
+        filenameToShow = fileInfo.fileName()
+        self.downloadTable.setItem(index, 0, QTableWidgetItem(filenameToShow))
         self.downloadTable.setItem(index, 1, QTableWidgetItem(url))
         self.downloadTable.setCellWidget(index, 2, downloadWidget.progressBar)

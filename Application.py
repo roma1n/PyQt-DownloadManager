@@ -4,6 +4,7 @@ from PyQt5.QtGui import QDesktopServices
 
 from Window import Window
 from FileDownloadManager import FileDownloadManager
+from Dialog.NewDownloadDialog import NewDownloadDialog
 
 
 class Application(QApplication):
@@ -30,11 +31,12 @@ class Application(QApplication):
         self.window = Window()
 
     def downloadFile(self):
-        url, _ = QInputDialog.getText(self.window.workspace, "File URL","URL:", QLineEdit.Normal, "")
-        options = QFileDialog.Options()
-        filename, _ = QFileDialog.getSaveFileName(None, 'File Name', options=options)
-        progress = self.fileDownloadManager.downloadFile(url, filename)
-        self.window.workspace.downloadList.addDownload(filename, url, progress)
+        newDownloadDialog = NewDownloadDialog()
+        response = newDownloadDialog.exec()
+        if response == QDialog.Accepted:
+            url, filename = newDownloadDialog.getInput()
+            progress = self.fileDownloadManager.downloadFile(url, filename)
+            self.window.workspace.downloadList.addDownload(filename, url, progress)
 
     def about(self):
         self.openBrowser(self.aboutUrl)
