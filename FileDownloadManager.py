@@ -6,7 +6,8 @@ from PyQt5.QtCore import *
 class FileDownloadManager(QObject):
     '''
     FileDownloadManager is for handling file downloads.
-    replyHandlers set holds links to valid ReplyHandlers to prevent them from deleting by garbage collector.
+    replyHandlers set holds links to valid ReplyHandlers 
+    to prevent them from deleting by garbage collector.
     '''
     class ReplyHandler():
         def __init__(self, reply, filename, fileDownloadManager):

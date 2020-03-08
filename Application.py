@@ -30,8 +30,9 @@ class Application(QApplication):
         self.window = Window()
 
     def downloadFile(self):
-        url, _ = QInputDialog.getText(None, "File URL","URL:", QLineEdit.Normal, "")
-        filename, _ = QFileDialog.getSaveFileName(None, 'File Name')
+        url, _ = QInputDialog.getText(self.window.workspace, "File URL","URL:", QLineEdit.Normal, "")
+        options = QFileDialog.Options()
+        filename, _ = QFileDialog.getSaveFileName(None, 'File Name', options=options)
         progress = self.fileDownloadManager.downloadFile(url, filename)
         self.window.workspace.downloadList.addDownload(filename, url, progress)
 

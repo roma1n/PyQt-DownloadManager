@@ -33,5 +33,3 @@ class DownloadWidget(QWidget):
         self.progress = progress
         self.progress.connect(self.update)
         self.layout.addWidget(self.progressBar)
-
-        self.show()
