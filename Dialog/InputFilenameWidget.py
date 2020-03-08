@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import *
 
+import Core.OSHandler as OSHandler
+
 
 class InputFilenameWidget(QWidget):
     def __init__(self, parent=None):
@@ -26,5 +28,7 @@ class InputFilenameWidget(QWidget):
 
     def updateFilename(self):
         options = QFileDialog.Options()
-        newFilename, _ = QFileDialog.getSaveFileName(None, 'File Name', options=options)
+        newFilename, _ = QFileDialog.getSaveFileName(None, 'File Name', 
+            directory=OSHandler.getDefaultDownloadFolder(), 
+            options=options)
         self.lineEdit.setText(newFilename)
