@@ -6,6 +6,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+decorator = "*"
+PyQt5 = "*"
+PyQt5-sip = "*"
+six = "*"
+validators = "*"
 
 [requires]
 python_version = "3.6"
