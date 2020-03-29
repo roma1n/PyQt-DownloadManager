@@ -11,6 +11,8 @@ PyQt5 = "*"
 PyQt5-sip = "*"
 six = "*"
 validators = "*"
+pytube3 = "*"
+ffmpeg-python = "*"
 
 [requires]
 python_version = "3.6"

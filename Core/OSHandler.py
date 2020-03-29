@@ -15,3 +15,6 @@ def getDefaultDownloadFolder():
 
 def openFileWithDefaultApp(filename):
     os.system('xdg-open {}'.format(filename))
+
+def rmdir(path):
+    os.system('rm -rf {}'.format(path))

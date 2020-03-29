@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0e87e33064304057ab58b9951332dced760b3d4116545fd35418c586c123b0e9"
+            "sha256": "90de124e37629669e466dff0811fb7488442e4858863b388f6c5fd60908de43f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,20 @@
             ],
             "index": "pypi",
             "version": "==4.4.2"
+        },
+        "ffmpeg-python": {
+            "hashes": [
+                "sha256:65225db34627c578ef0e11c8b1eb528bb35e024752f6f10b78c011f6f64c4127",
+                "sha256:ac441a0404e053f8b6a1113a77c0f452f1cfc62f6344a769475ffdc0f56c23c5"
+            ],
+            "index": "pypi",
+            "version": "==0.2.0"
+        },
+        "future": {
+            "hashes": [
+                "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"
+            ],
+            "version": "==0.18.2"
         },
         "pyqt5": {
             "hashes": [
@@ -58,6 +72,14 @@
             "index": "pypi",
             "version": "==12.7.1"
         },
+        "pytube3": {
+            "hashes": [
+                "sha256:98ae480a2d637572582e5c8b2e90fb7495f6d3a56daaffa7b2055113380f7d61",
+                "sha256:a02694b097c897a2afc68777e142a3d5268046960d01d4e01ac0584fda4499b1"
+            ],
+            "index": "pypi",
+            "version": "==9.6.4"
+        },
         "six": {
             "hashes": [
                 "sha256:236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a",
@@ -65,6 +87,14 @@
             ],
             "index": "pypi",
             "version": "==1.14.0"
+        },
+        "typing-extensions": {
+            "hashes": [
+                "sha256:091ecc894d5e908ac75209f10d5b4f118fbdb2eb1ede6a63544054bb1edb41f2",
+                "sha256:910f4656f54de5993ad9304959ce9bb903f90aadc7c67a0bef07e678014e892d",
+                "sha256:cf8b63fedea4d89bab840ecbb93e75578af28f76f66c35889bd7065f5af88575"
+            ],
+            "version": "==3.7.4.1"
         },
         "validators": {
             "hashes": [
