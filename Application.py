@@ -4,6 +4,8 @@ from PyQt5.QtGui import QDesktopServices
 
 from Window import Window
 from FileDownloadManager import FileDownloadManager
+from Dialog.NewDownloadDialog import NewDownloadDialog
+from Core.YoutubeDownloader import YoutubeDownloader
 
 
 class Application(QApplication):
@@ -17,6 +19,8 @@ class Application(QApplication):
         self.applicationTitle = 'Download Manager'
 
         self.fileDownloadManager = FileDownloadManager()
+        self.youtubeDownloader = YoutubeDownloader()
+
         self.initActions()
         self.initWindow()
         self.exec_()
@@ -24,17 +28,27 @@ class Application(QApplication):
     def initActions(self):
         self.actionsHolder = QObject()
         self.actionNew = self.buildAction('&New', function=self.downloadFile, shortcut='Ctrl+N')
+        self.actionYoutube = self.buildAction('&Youtube', function=self.downloadVideo, shortcut='Ctrl+Y')
         self.actionAbout = self.buildAction('&About', function=self.about)
 
     def initWindow(self):
         self.window = Window()
 
     def downloadFile(self):
-        url, _ = QInputDialog.getText(self.window.workspace, "File URL","URL:", QLineEdit.Normal, "")
-        options = QFileDialog.Options()
-        filename, _ = QFileDialog.getSaveFileName(None, 'File Name', options=options)
-        progress = self.fileDownloadManager.downloadFile(url, filename)
-        self.window.workspace.downloadList.addDownload(filename, url, progress)
+        newDownloadDialog = NewDownloadDialog()
+        response = newDownloadDialog.exec()
+        if response == QDialog.Accepted:
+            url, filename = newDownloadDialog.getInput()
+            progress = self.fileDownloadManager.downloadFile(url, filename)
+            self.window.workspace.downloadList.addDownload(filename, url, progress)
+
+    def downloadVideo(self):
+        newDownloadDialog = NewDownloadDialog()
+        response = newDownloadDialog.exec()
+        if response == QDialog.Accepted:
+            url, filename = newDownloadDialog.getInput()
+            progress = self.youtubeDownloader.download(url, filename)
+            self.window.workspace.downloadList.addDownload(filename, url, progress)
 
     def about(self):
         self.openBrowser(self.aboutUrl)

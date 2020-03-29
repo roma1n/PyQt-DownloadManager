@@ -8,6 +8,7 @@ class MenuBar(QMenuBar):
 
         self.fileMenu = self.addMenu('&File')
         self.fileMenu.addAction(qApp.actionNew)
+        self.fileMenu.addAction(qApp.actionYoutube)
         
         self.aboutMenu = self.addMenu('&About')
         self.aboutMenu.addAction(qApp.actionAbout)
